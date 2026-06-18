@@ -126,6 +126,15 @@ class AdbService {
     return devices;
   }
 
+  // A valid "adb devices -l" entry is "<serial>  <state> [key:value ...]".
+  // The serial is simply the first token: a physical serial, an emulator
+  // ("emulator-5554") or an "ip:port" for WiFi. We accept the line only when the
+  // second token is a known adb state, which keeps out daemon/error noise
+  // without dropping emulators the way a serial-shape regex would.
+  static final RegExp _deviceLine = RegExp(
+      r'^(\S+)\s+(device|offline|unauthorized|bootloader|recovery|sideload|rescue|connecting|authorizing|no permissions|host|unknown)\b');
+  static final RegExp _wifiSerial = RegExp(r'^(\d{1,3}\.){3}\d{1,3}:\d+$');
+
   static List<DeviceInfo> _parseDevicesOutput(String output) {
     final lines = output.split(RegExp(r'[\r\n]+'));
     List<DeviceInfo> devices = [];
@@ -133,39 +142,33 @@ class AdbService {
     for (final line in lines) {
       if (line.contains('List of')) continue;
       if (line.trim().isEmpty) continue;
-      final wifiMatch = RegExp(r'^((\d{1,3}\.){3}\d{1,3}:\d+?)(?=[ \t])').firstMatch(line);
-      String? serial;
-      if (wifiMatch != null) {
-        serial = wifiMatch.group(1);
+      final match = _deviceLine.firstMatch(line);
+      if (match == null) continue;
+      final serial = match.group(1)!;
+      final state = match.group(2)!;
+      serialN++;
+      String name = '';
+      final modelMatch = RegExp(r'model:(\S+)').firstMatch(line);
+      if (modelMatch != null) {
+        name = modelMatch.group(1)!;
       } else {
-        final serialMatch = RegExp(r'^([a-zA-Z]*[0-9][a-zA-Z0-9]+?)(?=[ \t])').firstMatch(line);
-        if (serialMatch != null) {
-          serial = serialMatch.group(1);
-        }
-      }
-      if (serial != null) {
-        serialN++;
-        String name = '';
-        final modelMatch = RegExp(r'model:(\S+)').firstMatch(line);
-        if (modelMatch != null) {
-          name = modelMatch.group(1)!;
+        final productMatch = RegExp(r'(device product|device):(\S+)').firstMatch(line);
+        if (productMatch != null) {
+          name = productMatch.group(2)!;
         } else {
-          final productMatch = RegExp(r'(device product|device):(\S+)').firstMatch(line);
-          if (productMatch != null) {
-            name = productMatch.group(2)!;
-          } else {
-            name = '${Localization.translate('device_fallback')} $serialN';
-          }
+          name = '${Localization.translate('device_fallback')} $serialN';
         }
-        final isActive = !(line.contains('offline') || line.contains('unauthorized'));
-        final connection = RegExp(r'^((\d{1,3}\.){3}\d{1,3}:\d+?)(?=[ \t])').hasMatch(line) ? 'WIFI' : 'USB';
-        devices.add(DeviceInfo(
-          name: name,
-          serial: serial,
-          connection: connection,
-          isActive: isActive,
-        ));
       }
+      final isActive = !(state == 'offline' || state == 'unauthorized');
+      final connection = _wifiSerial.hasMatch(serial)
+          ? 'WIFI'
+          : (serial.startsWith('emulator-') ? 'EMULATOR' : 'USB');
+      devices.add(DeviceInfo(
+        name: name,
+        serial: serial,
+        connection: connection,
+        isActive: isActive,
+      ));
     }
     return devices;
   }
