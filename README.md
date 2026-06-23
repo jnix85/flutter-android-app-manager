@@ -7,6 +7,7 @@
 ## GUI
 > <p align="center"><img src="pages/images/setup.jpg" style="width:600px;height:auto;"></p>
 > <p align="center"><img src="pages/images/gui.jpg" style="width:600px;height:auto;"></p>
+> <p align="center"><img src="pages/images/gui-list-icon.jpg" style="width:600px;height:auto;"></p>
 > <p align="center"><img src="pages/images/gui-icon.jpg" style="width:600px;height:auto;"></p>
 
 ## Features
