@@ -23,7 +23,7 @@ RUN apt update && apt install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Flutter SDK
-RUN git clone https://github.com/flutter/flutter.git /opt/flutter
+RUN git clone --depth=1 -b stable https://github.com/flutter/flutter.git /opt/flutter
 ENV PATH="/opt/flutter/bin:${PATH}"
 
 # Pre-cache Flutter binaries for Linux to speed up builds
