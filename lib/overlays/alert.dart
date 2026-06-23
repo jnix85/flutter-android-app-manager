@@ -304,7 +304,7 @@ class _LogDialog extends StatelessWidget {
             width: parentWidth * 0.8,
             height: parentHeight * 0.8,
             decoration: BoxDecoration(
-              color: Colors.black,
+              color: AppColors.of(context).surface,
               borderRadius: BorderRadius.circular(8),
             ),
             child: SingleChildScrollView(
