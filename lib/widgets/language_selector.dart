@@ -106,7 +106,7 @@ class _LanguageSelectorWidgetState extends State<LanguageSelectorWidget> {
               decoration: InputDecoration(
                 hintText: Localization.translate('search_languages_hint'),
                 hintStyle: widget.hintStyle ??
-                    const TextStyle(color: Colors.white70, fontSize: 14),
+                    TextStyle(color: AppColors.of(context).foregroundMuted, fontSize: 14),
                 border: OutlineInputBorder(
                   borderRadius:
                       widget.borderRadius ?? BorderRadius.circular(12),
@@ -114,23 +114,23 @@ class _LanguageSelectorWidgetState extends State<LanguageSelectorWidget> {
                 ),
                 filled: true,
                 fillColor: widget.searchFieldFillColor ??
-                    Colors.white.withOpacity(0.1),
+                    AppColors.of(context).foreground.withOpacity(0.1),
                 prefixIcon: Icon(Icons.search,
-                    color: widget.iconColor ?? Colors.white70),
+                    color: widget.iconColor ?? AppColors.of(context).foregroundMuted),
                 contentPadding: const EdgeInsets.symmetric(vertical: 10),
               ),
               style: widget.titleStyle ??
-                  const TextStyle(color: Colors.white, fontSize: 14),
+                  TextStyle(color: AppColors.of(context).foreground, fontSize: 14),
             ),
           ),
           const SizedBox(height: 16),
           SizedBox(
             height: widget.listHeight ?? 150,
             child: _isLoading
-                ? const Center(
+                ? Center(
                     child: CircularProgressIndicator(
                       strokeWidth: 2.5,
-                      color: Colors.blueAccent,
+                      color: Theme.of(context).primaryColor,
                     ),
                   )
                 : _filteredLanguages.isEmpty
@@ -138,9 +138,9 @@ class _LanguageSelectorWidgetState extends State<LanguageSelectorWidget> {
                         child: Text(
                           Localization.translate('no_languages_found'),
                           style: widget.titleStyle
-                                  ?.copyWith(color: Colors.white70) ??
-                              const TextStyle(
-                                  color: Colors.white70, fontSize: 14),
+                                  ?.copyWith(color: AppColors.of(context).foregroundMuted) ??
+                                  TextStyle(
+                                  color: AppColors.of(context).foregroundMuted, fontSize: 14),
                         ),
                       )
                     : ListView.builder(
@@ -157,7 +157,7 @@ class _LanguageSelectorWidgetState extends State<LanguageSelectorWidget> {
                                 style: TextStyle(
                                   color: ConfigUtils.currentLanguage ==
                                           lang['code']
-                                      ? Colors.blueAccent
+                                      ? Theme.of(context).primaryColor
                                       : AppColors.of(context).foreground,
                                   fontWeight: ConfigUtils.currentLanguage ==
                                           lang['code']
@@ -170,7 +170,7 @@ class _LanguageSelectorWidgetState extends State<LanguageSelectorWidget> {
                                       lang['code']
                                   ? Icon(Icons.check,
                                       color:
-                                          widget.iconColor ?? Colors.blueAccent,
+                                          widget.iconColor ?? const Color(0xFFD4A373),
                                       size: 20)
                                   : null,
                               onTap: () async {

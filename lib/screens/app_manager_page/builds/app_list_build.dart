@@ -61,14 +61,14 @@ extension _AppListBuild on _AppManagerPageState {
                     isExpanded
                         ? Icons.arrow_drop_up
                         : Icons.arrow_drop_down,
-                    color: Colors.blueAccent,
+                    color: Theme.of(context).primaryColor,
                     size: 20,
                   ),
                   label: Text(
                     isExpanded
                         ? Localization.translate('hide')
                         : Localization.translate('info'),
-                    style: const TextStyle(color: Colors.blueAccent, fontSize: 12),
+                    style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 12),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),

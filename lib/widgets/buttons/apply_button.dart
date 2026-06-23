@@ -1,4 +1,5 @@
 import 'package:app_manager/utils/localization.dart';
+import 'package:app_manager/utils/app_theme.dart';
 import 'package:app_manager/overlays/alert.dart';
 import 'package:app_manager/overlays/tips.dart';
 import 'package:animate_do/animate_do.dart';
@@ -29,16 +30,16 @@ class ApplyButton extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: onPressed,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blueAccent,
-                  foregroundColor: Colors.white,
+                  backgroundColor: Theme.of(context).primaryColor,
+                  foregroundColor: AppColors.of(context).foreground,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12)),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 ),
                 child: Text(Localization.translate('apply_button'),
-                    style: const TextStyle(
-                      color: Colors.white,
+                    style: TextStyle(
+                      color: AppColors.of(context).foreground,
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
                     ),

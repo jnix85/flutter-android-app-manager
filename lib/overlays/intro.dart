@@ -161,8 +161,8 @@ class _IntroductionOverlayState extends State<IntroductionOverlay> with TickerPr
                                     }
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.blueAccent,
-                                    foregroundColor: Colors.white,
+                                    backgroundColor: Theme.of(context).primaryColor,
+                                    foregroundColor: AppColors.of(context).foreground,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(12),
                                     ),
@@ -306,7 +306,7 @@ class _AnimatedBackgroundState extends State<AnimatedBackground> {
         velocity: velocity,
         size: 60 + _random.nextDouble() * 120,
         opacity: 0.15 + _random.nextDouble() * 0.2,
-        color: Colors.blueAccent.withOpacity(0.3 + _random.nextDouble() * 0.3),
+        color: Theme.of(context).primaryColor.withOpacity(0.3 + _random.nextDouble() * 0.3),
         shape: shapeType,
       ));
     }

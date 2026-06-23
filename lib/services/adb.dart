@@ -126,11 +126,7 @@ class AdbService {
     return devices;
   }
 
-  // A valid "adb devices -l" entry is "<serial>  <state> [key:value ...]".
-  // The serial is simply the first token: a physical serial, an emulator
-  // ("emulator-5554") or an "ip:port" for WiFi. We accept the line only when the
-  // second token is a known adb state, which keeps out daemon/error noise
-  // without dropping emulators the way a serial-shape regex would.
+  // Accepts any serial (physical, emulator, WiFi) when second token is a valid adb state
   static final RegExp _deviceLine = RegExp(
       r'^(\S+)\s+(device|offline|unauthorized|bootloader|recovery|sideload|rescue|connecting|authorizing|no permissions|host|unknown)\b');
   static final RegExp _wifiSerial = RegExp(r'^(\d{1,3}\.){3}\d{1,3}:\d+$');

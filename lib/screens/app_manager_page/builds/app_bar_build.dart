@@ -50,7 +50,7 @@ extension _AppBarBuild on _AppManagerPageState {
                           vertical: 8,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.blueAccent.withOpacity(0.2),
+                          color: Theme.of(context).primaryColor.withOpacity(0.2),
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(
                               color: c.foreground.withOpacity(0.2)),
@@ -87,7 +87,6 @@ class _ThemeModeSelector extends StatelessWidget {
       valueListenable: ThemeController.notifier,
       builder: (context, themeMode, _) {
         return Container(
-          height: 36,
           padding: const EdgeInsets.all(3),
           decoration: BoxDecoration(
             color: colors.surfaceVariant,
@@ -128,13 +127,13 @@ class _ThemeModeSelector extends StatelessWidget {
           width: 32,
           height: 30,
           decoration: BoxDecoration(
-            color: selected ? Colors.blueAccent : Colors.transparent,
+            color: selected ? Theme.of(context).primaryColor : Colors.transparent,
             borderRadius: BorderRadius.circular(7),
           ),
           child: Icon(
             icon,
             size: 16,
-            color: selected ? Colors.white : colors.foregroundMuted,
+            color: selected ? colors.foreground : colors.foregroundMuted,
           ),
         ),
       ),

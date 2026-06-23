@@ -126,12 +126,6 @@ class _ReposOverlayState extends State<ReposOverlay> {
                           controller: _searchController,
                           decoration: InputDecoration(
                             hintText: Localization.translate('search_repos_hint'),
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                            focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                            enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                            filled: true,
-                            fillColor: AppColors.of(context).foreground.withOpacity(0.1),
-                            hintStyle: TextStyle(color: AppColors.of(context).foregroundMuted),
                           ),
                           style: TextStyle(color: AppColors.of(context).foreground),
                           onSubmitted: (_) => _searchRepos(),
@@ -175,7 +169,7 @@ class _ReposOverlayState extends State<ReposOverlay> {
                               height: 48,
                               child: CircularProgressIndicator(
                                 strokeWidth: 4,
-                                valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
+                                valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor),
                               ),
                             ),
                           ),
@@ -186,7 +180,7 @@ class _ReposOverlayState extends State<ReposOverlay> {
                               return FadeIn(
                                 duration: const Duration(milliseconds: 300),
                                 child: Card(
-                                  elevation: 2.0,
+                                  elevation: 0,
                                   color: AppColors.of(context).surface,
                                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                                   margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),

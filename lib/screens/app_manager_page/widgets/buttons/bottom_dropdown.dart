@@ -40,7 +40,7 @@ extension _BottomDropdownBuild on _AppManagerPageState {
                           Localization.translate(item['text']!),
                           style: TextStyle(
                             color: item['value'] == value
-                                ? Colors.blueAccent
+                                ? Theme.of(context).primaryColor
                                 : c.foreground,
                             fontWeight: item['value'] == value
                                 ? FontWeight.w600
@@ -50,8 +50,8 @@ extension _BottomDropdownBuild on _AppManagerPageState {
                           overflow: TextOverflow.ellipsis,
                         ),
                         trailing: item['value'] == value
-                            ? const Icon(Icons.check,
-                                color: Colors.blueAccent, size: 20)
+                            ? Icon(Icons.check,
+                                color: Theme.of(context).primaryColor, size: 20)
                             : null,
                         onTap: () {
                           onChanged(item['value']);

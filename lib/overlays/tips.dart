@@ -88,7 +88,7 @@ class HintMessageState extends State<HintMessage> {
         return Positioned.fromRelativeRect(
           rect: hintPosition,
           child: Material(
-            elevation: 4.0,
+            elevation: 0,
             borderRadius: BorderRadius.circular(12.0),
             color: AppColors.of(context).background,
             child: Container(

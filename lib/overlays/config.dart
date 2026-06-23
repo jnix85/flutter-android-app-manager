@@ -197,7 +197,7 @@ class ConfigOverlayState extends State<ConfigOverlay> with TickerProviderStateMi
     required Animation<double> animation,
   }) {
     return Card(
-      elevation: 2.0,
+      elevation: 0,
       color: AppColors.of(context).surface,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Column(
@@ -354,7 +354,7 @@ class ConfigOverlayState extends State<ConfigOverlay> with TickerProviderStateMi
                       ),
                       SizedBox(height: padding),
                       Card(
-                        elevation: 2.0,
+                        elevation: 0,
                         color: AppColors.of(context).surface,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                         child: Padding(
@@ -368,9 +368,6 @@ class ConfigOverlayState extends State<ConfigOverlay> with TickerProviderStateMi
                                 controller: _ipController,
                                 decoration: InputDecoration(
                                   labelText: Localization.translate('device_ip'),
-                                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                                  filled: true,
-                                  fillColor: AppColors.of(context).foreground.withOpacity(0.1),
                                   hintText: Localization.translate('ip_hint'),
                                 ),
                                 keyboardType: TextInputType.numberWithOptions(decimal: true),
@@ -381,9 +378,6 @@ class ConfigOverlayState extends State<ConfigOverlay> with TickerProviderStateMi
                                 controller: _portController,
                                 decoration: InputDecoration(
                                   labelText: Localization.translate('port'),
-                                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                                  filled: true,
-                                  fillColor: AppColors.of(context).foreground.withOpacity(0.1),
                                   hintText: Localization.translate('port_hint'),
                                 ),
                                 keyboardType: TextInputType.number,
@@ -395,13 +389,13 @@ class ConfigOverlayState extends State<ConfigOverlay> with TickerProviderStateMi
                                 children: [
                                   ElevatedButton.icon(
                                     icon: _connecting
-                                        ? const SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
+                                        ? SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2, color: AppColors.of(context).foreground))
                                         : const Icon(Icons.wifi, size: 16),
                                     label: Text(Localization.translate('connect'), style: const TextStyle(fontSize: 14)),
                                     onPressed: _connecting ? null : _connect,
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.blueAccent,
-                                      foregroundColor: Colors.white,
+                                      backgroundColor: Theme.of(context).primaryColor,
+                                      foregroundColor: AppColors.of(context).foreground,
                                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                                       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                                     ),
@@ -484,8 +478,8 @@ class OptionItem extends StatelessWidget {
         contentPadding: const EdgeInsets.symmetric(horizontal: 8),
         controlAffinity: ListTileControlAffinity.leading,
         checkboxShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-        activeColor: Colors.blueAccent,
-        checkColor: Colors.white,
+        activeColor: Theme.of(context).primaryColor,
+        checkColor: AppColors.of(context).foreground,
         visualDensity: const VisualDensity(horizontal: -2, vertical: -4),
       ),
     );

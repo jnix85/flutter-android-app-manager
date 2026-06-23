@@ -36,14 +36,14 @@ class AppColors extends ThemeExtension<AppColors> {
   );
 
   static const AppColors light = AppColors(
-    background: Color(0xFFF5F5F5),
-    surface: Color(0xFFFFFFFF),
-    surfaceVariant: Color(0xFFE0E0E0),
-    surfaceMuted: Color(0xFFBDBDBD),
-    buttonSurface: Color(0xFFECEFF1),
-    buttonSurfaceVariant: Color(0xFFCFD8DC),
-    foreground: Color(0xFF212121),
-    foregroundMuted: Color(0x8A000000),
+    background: Color(0xFFF3F0E9),
+    surface: Color(0xFFE8E3D8),
+    surfaceVariant: Color(0xFFDBD4C7),
+    surfaceMuted: Color(0xFFC2BAAC),
+    buttonSurface: Color(0xFFE0D8C9),
+    buttonSurfaceVariant: Color(0xFFD1C8B6),
+    foreground: Color(0xFF33312E),
+    foregroundMuted: Color(0x9933312E),
   );
 
   static AppColors of(BuildContext context) =>
@@ -96,36 +96,92 @@ class AppTheme {
         : ThemeData.light();
     return base.copyWith(
       extensions: <ThemeExtension<dynamic>>[colors],
-      primaryColor: Colors.blueAccent,
+      primaryColor: brightness == Brightness.dark ? Colors.blueAccent : const Color(0xFFD4A373),
       scaffoldBackgroundColor: colors.background,
       canvasColor: colors.background,
       cardColor: colors.surface,
+      dialogBackgroundColor: colors.background,
       textTheme: GoogleFonts.poppinsTextTheme(base.textTheme).apply(
         bodyColor: colors.foreground,
         displayColor: colors.foreground,
       ),
       iconTheme: IconThemeData(color: colors.foregroundMuted, size: 20),
       cardTheme: CardThemeData(
-        elevation: 2,
+        elevation: 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         color: colors.surface,
       ),
+      checkboxTheme: CheckboxThemeData(
+        side: WidgetStateBorderSide.resolveWith((Set<WidgetState> states) {
+          if (states.contains(WidgetState.selected)) {
+            return BorderSide(color: brightness == Brightness.dark ? Colors.blueAccent : const Color(0xFFD4A373), width: 1.5);
+          }
+          return BorderSide(color: colors.foregroundMuted, width: 1.5);
+        }),
+      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.blueAccent,
-          foregroundColor: Colors.white,
+          backgroundColor: brightness == Brightness.dark ? Colors.blueAccent : const Color(0xFFD4A373),
+          foregroundColor: colors.foreground,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
         ),
       ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: colors.foreground.withOpacity(0.05),
+        hintStyle: TextStyle(color: colors.foregroundMuted),
+        labelStyle: TextStyle(color: colors.foregroundMuted),
+        prefixIconColor: colors.foregroundMuted,
+        suffixIconColor: colors.foregroundMuted,
+        iconColor: colors.foregroundMuted,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          borderSide: BorderSide.none,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          borderSide: BorderSide.none,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          borderSide: BorderSide.none,
+        ),
+      ),
+      textSelectionTheme: TextSelectionThemeData(
+        cursorColor: brightness == Brightness.dark ? Colors.blueAccent : const Color(0xFFD4A373),
+        selectionColor: (brightness == Brightness.dark ? Colors.blueAccent : const Color(0xFFD4A373)).withOpacity(0.3),
+        selectionHandleColor: brightness == Brightness.dark ? Colors.blueAccent : const Color(0xFFD4A373),
+      ),
       colorScheme: (brightness == Brightness.dark
               ? const ColorScheme.dark()
               : const ColorScheme.light())
           .copyWith(
-        primary: Colors.blueAccent,
+        primary: brightness == Brightness.dark ? Colors.blueAccent : const Color(0xFFD4A373),
         surface: colors.surface,
         onSurface: colors.foreground,
+      ),
+      dataTableTheme: DataTableThemeData(
+        headingRowColor: WidgetStateProperty.all(Colors.transparent),
+        dataRowColor: WidgetStateProperty.all(Colors.transparent),
+        dividerThickness: 1,
+        horizontalMargin: 12,
+        columnSpacing: 24,
+        headingTextStyle: base.textTheme.bodySmall?.copyWith(
+          fontWeight: FontWeight.w600,
+          color: colors.foreground,
+          fontSize: 13,
+        ),
+        dataTextStyle: base.textTheme.bodySmall?.copyWith(
+          color: colors.foreground,
+          fontSize: 12,
+        ),
+      ),
+      dividerTheme: DividerThemeData(
+        color: colors.foreground.withOpacity(0.1),
+        thickness: 1,
+        space: 1,
       ),
     );
   }

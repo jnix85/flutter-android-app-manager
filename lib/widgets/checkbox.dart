@@ -1,6 +1,7 @@
 import 'package:app_manager/overlays/alert.dart';
 import 'package:app_manager/overlays/tips.dart';
 import 'package:app_manager/utils/localization.dart';
+import 'package:app_manager/utils/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class AppCheckbox extends StatelessWidget {
@@ -37,8 +38,8 @@ class AppCheckbox extends StatelessWidget {
                   },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(6)),
-                  activeColor: Colors.blueAccent,
-                  checkColor: Colors.white,
+                  activeColor: Theme.of(context).primaryColor,
+                  checkColor: AppColors.of(context).foreground,
                   materialTapTargetSize: MaterialTapTargetSize.padded,
                 ),
               )
@@ -50,8 +51,8 @@ class AppCheckbox extends StatelessWidget {
                 },
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(6)),
-                activeColor: Colors.blueAccent,
-                checkColor: Colors.white,
+                activeColor: Theme.of(context).primaryColor,
+                checkColor: AppColors.of(context).foreground,
                 materialTapTargetSize: MaterialTapTargetSize.padded,
               );
       },

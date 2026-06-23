@@ -220,7 +220,7 @@ class _WarningDialog extends StatelessWidget {
                                               duration: const Duration(milliseconds: 300),
                                               child: IconButton(
                                                 tooltip: Localization.translate('open_in_browser'),
-                                                icon: Icon(Icons.language, color: Colors.blueAccent),
+                                                icon: Icon(Icons.language, color: Theme.of(context).primaryColor),
                                                 onPressed: () => _openInBrowser(context),
                                               ),
                                             ),

@@ -53,7 +53,7 @@ extension _SidePanelBuild on _AppManagerPageState {
                             Container(
                               padding: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
-                                color: c.background,
+                                color: c.surfaceVariant,
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: Column(
@@ -124,47 +124,19 @@ extension _SidePanelBuild on _AppManagerPageState {
                                     ],
                                   ),
                                   const SizedBox(height: 8),
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 8, vertical: 8),
-                                    decoration: BoxDecoration(
-                                      color: Colors.transparent,
-                                      borderRadius: BorderRadius.circular(8),
-                                      border: Border.all(
-                                          color: c.foreground.withOpacity(0.2)),
-                                    ),
-                                    child: FadeIn(
-                                      duration: const Duration(milliseconds: 550),
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 4, bottom: 6),
-                                            child: Text(
-                                              Localization.translate('view_mode'),
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                color: c.foregroundMuted,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                          ),
-                                          ViewSelector(
-                                            currentMode: _viewMode,
-                                            onModeChanged: (mode) {
-                                              _rebuild(() => _viewMode = mode);
-                                              if (mode == ViewMode.mosaic &&
-                                                  !_showIcons) {
-                                                _setShowIcons(true);
-                                              }
-                                            },
-                                            showIcons: _showIcons,
-                                            onShowIcons: _setShowIcons,
-                                          ),
-                                        ],
-                                      ),
+                                  FadeIn(
+                                    duration: const Duration(milliseconds: 550),
+                                    child: ViewSelector(
+                                      currentMode: _viewMode,
+                                      onModeChanged: (mode) {
+                                        _rebuild(() => _viewMode = mode);
+                                        if (mode == ViewMode.mosaic &&
+                                            !_showIcons) {
+                                          _setShowIcons(true);
+                                        }
+                                      },
+                                      showIcons: _showIcons,
+                                      onShowIcons: _setShowIcons,
                                     ),
                                   ),
                                   const SizedBox(height: 8),
@@ -306,8 +278,8 @@ extension _SidePanelBuild on _AppManagerPageState {
                                     DataRow(cells: [
                                       DataCell(Text(
                                           Localization.translate('total'),
-                                          style: const TextStyle(
-                                              color: Colors.blueAccent,
+                                          style: TextStyle(
+                                              color: Theme.of(context).primaryColor,
                                               fontWeight: FontWeight.bold,
                                               fontSize: 12),
                                           overflow: TextOverflow.ellipsis)),
@@ -317,8 +289,8 @@ extension _SidePanelBuild on _AppManagerPageState {
                                                   ManagerService.uninstallCount +
                                                   ManagerService.deactivateCount)
                                               .toString(),
-                                          style: const TextStyle(
-                                              color: Colors.blueAccent,
+                                          style: TextStyle(
+                                              color: Theme.of(context).primaryColor,
                                               fontWeight: FontWeight.bold,
                                               fontSize: 12),
                                           overflow: TextOverflow.ellipsis)),

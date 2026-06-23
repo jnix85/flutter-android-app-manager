@@ -67,7 +67,7 @@ class ViewSelector extends StatelessWidget {
             duration: const Duration(milliseconds: 200),
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 6),
             decoration: BoxDecoration(
-              color: selected ? Colors.blueAccent : Colors.transparent,
+              color: selected ? Theme.of(context).primaryColor : Colors.transparent,
               borderRadius: BorderRadius.circular(8),
             ),
             child: Row(
@@ -75,7 +75,7 @@ class ViewSelector extends StatelessWidget {
               children: [
                 Icon(icon,
                     size: 16,
-                    color: selected ? Colors.white : colors.foregroundMuted),
+                    color: selected ? colors.foreground : colors.foregroundMuted),
                 const SizedBox(width: 6),
                 Flexible(
                   child: Text(
@@ -85,7 +85,7 @@ class ViewSelector extends StatelessWidget {
                       fontWeight:
                           selected ? FontWeight.w600 : FontWeight.w500,
                       color:
-                          selected ? Colors.white : colors.foregroundMuted,
+                          selected ? colors.foreground : colors.foregroundMuted,
                     ),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,

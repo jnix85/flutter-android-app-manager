@@ -30,7 +30,7 @@ class Loading extends StatelessWidget {
               padding: const EdgeInsets.all(12),
               child: CircularProgressIndicator(
                 strokeWidth: 2.5,
-                color: Colors.blueAccent,
+                color: Theme.of(context).primaryColor,
                 backgroundColor: colors.foreground.withOpacity(0.1),
               ),
             ),

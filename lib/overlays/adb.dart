@@ -44,7 +44,7 @@ class _DeviceSelectorDialog extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: SingleChildScrollView(
                 child: Card(
-                  elevation: 2.0,
+                  elevation: 0,
                   color: AppColors.of(context).surface,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   child: DataTable(
@@ -117,8 +117,8 @@ class _DeviceSelectorDialog extends StatelessWidget {
                                 duration: const Duration(milliseconds: 300),
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.blueAccent,
-                                    foregroundColor: Colors.white,
+                                    backgroundColor: Theme.of(context).primaryColor,
+                                    foregroundColor: AppColors.of(context).foreground,
                                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                                   ),
                                   onPressed: () => Navigator.of(context).pop(device),

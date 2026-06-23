@@ -13,7 +13,7 @@ class LoadingOverlay {
         color: Color.fromRGBO(0, 0, 0, 0.5),
         child: Center(
           child: Card(
-            elevation: 2.0,
+            elevation: 0,
             color: AppColors.of(context).background,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
             child: Padding(
@@ -28,7 +28,7 @@ class LoadingOverlay {
                       height: 48,
                       child: CircularProgressIndicator(
                         strokeWidth: 4,
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
+                        valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor),
                       ),
                     ),
                   ),

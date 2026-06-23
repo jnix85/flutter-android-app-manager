@@ -22,7 +22,7 @@ extension _IconGridBuild on _AppManagerPageState {
         return FadeIn(
           duration: const Duration(milliseconds: 100),
           child: Card(
-            elevation: 2,
+            elevation: 0,
             margin: EdgeInsets.zero,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             child: Padding(
@@ -38,8 +38,8 @@ extension _IconGridBuild on _AppManagerPageState {
                       _triggerApplyHint();
                     }),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                    activeColor: Colors.blue,
-                    checkColor: Colors.white,
+                    activeColor: Theme.of(context).primaryColor,
+                    checkColor: AppColors.of(context).foreground,
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     visualDensity: const VisualDensity(horizontal: -2, vertical: -2),
                   ),
@@ -64,12 +64,16 @@ extension _IconGridBuild on _AppManagerPageState {
                               child: Container(
                                 width: 56,
                                 height: 56,
-                                color: const Color.fromRGBO(0, 0, 0, 0.45),
+                                color: AppColors.of(context).foreground.withOpacity(0.15),
                                 child: Center(
                                   child: IconButton(
-                                    icon: const Icon(Icons.download_rounded, color: Colors.white, size: 28),
+                                    icon: Icon(Icons.download_rounded, color: AppColors.of(context).foreground, size: 28),
                                     tooltip: Localization.translate('export_icon'),
                                     onPressed: () async => await FileManager.exportAppIcon(context, app['package'], app['iconPath']),
+                                    style: IconButton.styleFrom(
+                                      padding: EdgeInsets.zero,
+                                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                    ),
                                   ),
                                 ),
                               ),

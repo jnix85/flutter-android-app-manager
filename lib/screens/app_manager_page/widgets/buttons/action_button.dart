@@ -23,15 +23,8 @@ extension _ActionButtonBuild on _AppManagerPageState {
               height: 70,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: colors.background.withOpacity(0.8),
+                color: Colors.transparent,
                 border: Border.all(color: colors.foreground.withOpacity(0.2)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
-                    blurRadius: 4,
-                    spreadRadius: 1,
-                  ),
-                ],
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

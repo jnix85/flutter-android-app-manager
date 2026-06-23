@@ -12,14 +12,6 @@ extension _SearchBarBuild on _AppManagerPageState {
         decoration: BoxDecoration(
           color: colors.surface.withOpacity(0.8),
           borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.2),
-              spreadRadius: 2,
-              blurRadius: 8,
-              offset: const Offset(0, 4),
-            ),
-          ],
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -30,14 +22,8 @@ extension _SearchBarBuild on _AppManagerPageState {
                 controller: _searchController,
                 decoration: InputDecoration(
                   hintText: Localization.translate('search_hint'),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide.none,
-                  ),
-                  filled: true,
-                  fillColor: colors.foreground.withOpacity(0.1),
                   prefixIcon: const Icon(Icons.search),
-                  contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
                 ),
                 style: TextStyle(color: colors.foreground, fontSize: 14),
               ),
