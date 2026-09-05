@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "BlassGO" "\0"
+            VALUE "CompanyName", "Android App Manager contributors" "\0"
             VALUE "FileDescription", "Android App Manager" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "App Manager" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2025 BlassGO. All rights reserved." "\0"
-            VALUE "OriginalFilename", "app_manager.exe" "\0"
-            VALUE "ProductName", "App Manager" "\0"
+            VALUE "InternalName", "Android App Manager" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2024-2026 BlassGO and contributors. GPL-3.0." "\0"
+            VALUE "OriginalFilename", "android_app_manager.exe" "\0"
+            VALUE "ProductName", "Android App Manager" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

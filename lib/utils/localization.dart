@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:app_manager/utils/config.dart';
+import 'package:android_app_manager/utils/config.dart';
 import 'package:xml/xml.dart';
 
 class Localization {

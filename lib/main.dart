@@ -1,9 +1,9 @@
 import 'dart:io';
-import 'package:app_manager/screens/app_manager_page/app_manager_page.dart';
-import 'package:app_manager/overlays/intro.dart';
-import 'package:app_manager/utils/config.dart';
-import 'package:app_manager/utils/localization.dart';
-import 'package:app_manager/utils/app_theme.dart';
+import 'package:android_app_manager/screens/app_manager_page/app_manager_page.dart';
+import 'package:android_app_manager/overlays/intro.dart';
+import 'package:android_app_manager/utils/config.dart';
+import 'package:android_app_manager/utils/localization.dart';
+import 'package:android_app_manager/utils/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:path_provider/path_provider.dart';
@@ -25,7 +25,7 @@ void main() async {
       ..minSize = initialSize
       ..size = initialSize
       ..alignment = Alignment.center
-      ..title = 'App Manager [${packageInfo.version}]'
+      ..title = 'Android App Manager [${packageInfo.version}]'
       ..show();
   });
 }
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
       valueListenable: ThemeController.notifier,
       builder: (context, themeMode, child) {
         return MaterialApp(
-          title: 'App Manager',
+          title: 'Android App Manager',
           locale: const Locale('en'),
           supportedLocales: const [Locale('en')],
           theme: AppTheme.light,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:app_manager/models/device_info.dart';
+import 'package:android_app_manager/models/device_info.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:app_manager/utils/localization.dart';
-import 'package:app_manager/utils/app_theme.dart';
+import 'package:android_app_manager/utils/localization.dart';
+import 'package:android_app_manager/utils/app_theme.dart';
 
 class AdbOverlay {
   static Future<DeviceInfo?> showDeviceSelector(BuildContext context, List<DeviceInfo> devices) async {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:app_manager/utils/config.dart';
+import 'package:android_app_manager/utils/config.dart';
 
 @immutable
 class AppColors extends ThemeExtension<AppColors> {

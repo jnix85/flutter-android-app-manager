@@ -1,5 +1,5 @@
-import 'package:app_manager/utils/localization.dart';
-import 'package:app_manager/utils/app_theme.dart';
+import 'package:android_app_manager/utils/localization.dart';
+import 'package:android_app_manager/utils/app_theme.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 

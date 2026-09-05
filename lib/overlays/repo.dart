@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:app_manager/api/repo.dart';
-import 'package:app_manager/utils/file_manager.dart';
-import 'package:app_manager/overlays/alert.dart';
-import 'package:app_manager/utils/url.dart';
+import 'package:android_app_manager/api/repo.dart';
+import 'package:android_app_manager/utils/file_manager.dart';
+import 'package:android_app_manager/overlays/alert.dart';
+import 'package:android_app_manager/utils/url.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:app_manager/utils/localization.dart';
-import 'package:app_manager/utils/app_theme.dart';
+import 'package:android_app_manager/utils/localization.dart';
+import 'package:android_app_manager/utils/app_theme.dart';
 
 class ReposOverlay extends StatefulWidget {
   final VoidCallback? refreshUI;

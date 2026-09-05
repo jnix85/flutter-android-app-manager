@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:app_manager/utils/app_theme.dart';
-import 'package:app_manager/utils/config.dart';
+import 'package:android_app_manager/utils/app_theme.dart';
+import 'package:android_app_manager/utils/config.dart';
 
 class HintMessage extends StatefulWidget {
   final String hintKey;
