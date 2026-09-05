@@ -1,13 +1,13 @@
 import 'dart:io';
 import 'dart:convert';
-import 'package:app_manager/services/manager.dart';
+import 'package:android_app_manager/services/manager.dart';
 import 'package:flutter/material.dart';
-import 'package:app_manager/models/device_info.dart';
-import 'package:app_manager/overlays/adb.dart';
-import 'package:app_manager/overlays/load.dart';
-import 'package:app_manager/overlays/alert.dart';
-import 'package:app_manager/utils/config.dart';
-import 'package:app_manager/utils/localization.dart';
+import 'package:android_app_manager/models/device_info.dart';
+import 'package:android_app_manager/overlays/adb.dart';
+import 'package:android_app_manager/overlays/load.dart';
+import 'package:android_app_manager/overlays/alert.dart';
+import 'package:android_app_manager/utils/config.dart';
+import 'package:android_app_manager/utils/localization.dart';
 
 class AdbService {
   static final StringBuffer _logBuffer = StringBuffer();
@@ -39,15 +39,53 @@ class AdbService {
   static Future<bool> isAdbAvailable() async {
     if (_isAdbAvailable) return true;
     await runAdb(['version']);
+    if (hasError() && ConfigUtils.adbPath == null) {
+      // GUI apps launched from Finder or a .desktop file get a minimal PATH,
+      // so adb installed via Homebrew or the Android SDK is not visible.
+      final found = _findAdbInKnownLocations();
+      if (found != null) {
+        ConfigUtils.adbPath = found;
+        await ConfigUtils.save();
+        appendLog('ADB auto-detected at $found');
+        await runAdb(['version']);
+      }
+    }
     _isAdbAvailable = !hasError();
     return _isAdbAvailable;
+  }
+
+  static String? _findAdbInKnownLocations() {
+    final env = Platform.environment;
+    final home = env['HOME'] ?? env['USERPROFILE'] ?? '';
+    final exe = Platform.isWindows ? 'adb.exe' : 'adb';
+    final sep = Platform.pathSeparator;
+    final candidates = <String>[
+      for (final sdk in [env['ANDROID_HOME'], env['ANDROID_SDK_ROOT']])
+        if (sdk != null && sdk.isNotEmpty) '$sdk${sep}platform-tools$sep$exe',
+      if (Platform.isMacOS) ...[
+        '/opt/homebrew/bin/adb',
+        '/usr/local/bin/adb',
+        '$home/Library/Android/sdk/platform-tools/adb',
+      ],
+      if (Platform.isLinux) ...[
+        '$home/Android/Sdk/platform-tools/adb',
+        '/usr/bin/adb',
+        '/usr/lib/android-sdk/platform-tools/adb',
+      ],
+      if (Platform.isWindows && (env['LOCALAPPDATA'] ?? '').isNotEmpty)
+        '${env['LOCALAPPDATA']}\\Android\\Sdk\\platform-tools\\adb.exe',
+    ];
+    for (final path in candidates) {
+      if (File(path).existsSync()) return path;
+    }
+    return null;
   }
 
   static Map<String, String> _withEnv() {
     final env = Map<String, String>.from(Platform.environment);
     if (ConfigUtils.adbPath != null) {
       final adbDir = File(ConfigUtils.adbPath!).parent.path;
-      env['PATH'] = '${env['PATH']}${Platform.pathSeparator}$adbDir';
+      env['PATH'] = '${env['PATH']}${Platform.isWindows ? ';' : ':'}$adbDir';
     }
     return env;
   }
@@ -192,7 +230,7 @@ class AdbService {
     if (Platform.isLinux) {
       return 'sudo apt install android-tools-adb';
     } else if (Platform.isMacOS) {
-      return 'brew install android-platform-tools';
+      return 'brew install --cask android-platform-tools';
     } else {
       return 'https://developer.android.com/tools/releases/platform-tools';
     }

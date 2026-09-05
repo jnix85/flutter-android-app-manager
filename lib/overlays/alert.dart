@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:app_manager/utils/url.dart';
-import 'package:app_manager/utils/file_manager.dart';
+import 'package:android_app_manager/utils/url.dart';
+import 'package:android_app_manager/utils/file_manager.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:app_manager/utils/localization.dart';
-import 'package:app_manager/utils/app_theme.dart';
+import 'package:android_app_manager/utils/localization.dart';
+import 'package:android_app_manager/utils/app_theme.dart';
 
 class Alert {
   static void showWarning(BuildContext context, String message, {String? command}) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:app_manager/overlays/alert.dart';
-import 'package:app_manager/utils/localization.dart';
+import 'package:android_app_manager/overlays/alert.dart';
+import 'package:android_app_manager/utils/localization.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class UrlUtils {

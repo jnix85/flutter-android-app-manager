@@ -7,7 +7,7 @@ extension _AppBarBuild on _AppManagerPageState {
       title: FadeIn(
         duration: const Duration(milliseconds: 300),
         child: const Text(
-          'App Manager',
+          'Android App Manager',
           style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
           overflow: TextOverflow.ellipsis,
         ),
@@ -23,13 +23,6 @@ extension _AppBarBuild on _AppManagerPageState {
           child: const _ThemeModeSelector(),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          child: FadeInRight(
-            duration: const Duration(milliseconds: 350),
-            child: const DonateButton(),
-          ),
-        ),
-        Padding(
           padding: const EdgeInsets.only(right: 12),
           child: ValueListenableBuilder<String>(
             valueListenable: Localization.languageNotifier,
@@ -43,7 +36,7 @@ extension _AppBarBuild on _AppManagerPageState {
                     cursor: SystemMouseCursors.click,
                     child: GestureDetector(
                       onTap: () => UrlUtils.launchUrlOrShow(
-                          context, 'https://github.com/BlassGO/AppManager-GUI'),
+                          context, 'https://github.com/jnix85/flutter-android-app-manager'),
                       child: Container(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 12,
@@ -56,7 +49,7 @@ extension _AppBarBuild on _AppManagerPageState {
                               color: c.foreground.withOpacity(0.2)),
                         ),
                         child: Text(
-                          '@BlassGO',
+                          'GitHub',
                           style: TextStyle(
                             color: c.foreground,
                             fontSize: 13,

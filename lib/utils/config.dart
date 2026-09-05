@@ -19,7 +19,7 @@ class ConfigUtils {
 
   static Future<File> _getConfigFile() async {
     final dir = await getApplicationSupportDirectory();
-    return File('${dir.path}/app_manager.json');
+    return File('${dir.path}/android_app_manager.json');
   }
 
   static Future<void> save() async {

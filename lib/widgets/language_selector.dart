@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:app_manager/utils/config.dart';
-import 'package:app_manager/utils/localization.dart';
-import 'package:app_manager/utils/app_theme.dart';
-import 'package:app_manager/overlays/alert.dart';
+import 'package:android_app_manager/utils/config.dart';
+import 'package:android_app_manager/utils/localization.dart';
+import 'package:android_app_manager/utils/app_theme.dart';
+import 'package:android_app_manager/overlays/alert.dart';
 
 class LanguageSelectorWidget extends StatefulWidget {
   final Future<void> Function(String) onLanguageSelected;

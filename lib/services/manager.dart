@@ -2,11 +2,11 @@ import 'dart:io';
 //import 'package:archive/archive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:app_manager/services/adb.dart';
-import 'package:app_manager/overlays/alert.dart';
-import 'package:app_manager/overlays/load.dart';
-import 'package:app_manager/utils/config.dart';
-import 'package:app_manager/utils/localization.dart';
+import 'package:android_app_manager/services/adb.dart';
+import 'package:android_app_manager/overlays/alert.dart';
+import 'package:android_app_manager/overlays/load.dart';
+import 'package:android_app_manager/utils/config.dart';
+import 'package:android_app_manager/utils/localization.dart';
 
 class ManagerService {
   static Map<String, Map<String, dynamic>> apps = {};

@@ -1,14 +1,14 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:app_manager/services/adb.dart';
-import 'package:app_manager/services/manager.dart';
-import 'package:app_manager/overlays/alert.dart';
-import 'package:app_manager/utils/config.dart';
-import 'package:app_manager/utils/file_manager.dart';
+import 'package:android_app_manager/services/adb.dart';
+import 'package:android_app_manager/services/manager.dart';
+import 'package:android_app_manager/overlays/alert.dart';
+import 'package:android_app_manager/utils/config.dart';
+import 'package:android_app_manager/utils/file_manager.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:app_manager/utils/localization.dart';
-import 'package:app_manager/utils/app_theme.dart';
-import 'package:app_manager/widgets/language_selector.dart';
+import 'package:android_app_manager/utils/localization.dart';
+import 'package:android_app_manager/utils/app_theme.dart';
+import 'package:android_app_manager/widgets/language_selector.dart';
 
 class ConfigOverlay extends StatefulWidget {
   final VoidCallback? onConnect;

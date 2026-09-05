@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:app_manager/utils/app_theme.dart';
-import 'package:app_manager/overlays/alert.dart';
-import 'package:app_manager/utils/localization.dart';
-import 'package:app_manager/widgets/language_selector.dart';
+import 'package:android_app_manager/utils/app_theme.dart';
+import 'package:android_app_manager/overlays/alert.dart';
+import 'package:android_app_manager/utils/localization.dart';
+import 'package:android_app_manager/widgets/language_selector.dart';
 import 'dart:math' as math;
 
 class IntroductionOverlay extends StatefulWidget {

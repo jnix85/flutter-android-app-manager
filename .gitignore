@@ -5,9 +5,11 @@
 *.swp
 .DS_Store
 .atom/
+.build/
 .buildlog/
 .history
 .svn/
+.swiftpm/
 migrate_working_dir/
 
 # No needed
@@ -51,6 +53,8 @@ app.*.map.json
 .metadata
 .local/
 *.lock
+!pubspec.lock
+!macos/Podfile.lock
 *.db
 .env
 *.env

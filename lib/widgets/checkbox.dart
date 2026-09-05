@@ -1,7 +1,6 @@
-import 'package:app_manager/overlays/alert.dart';
-import 'package:app_manager/overlays/tips.dart';
-import 'package:app_manager/utils/localization.dart';
-import 'package:app_manager/utils/app_theme.dart';
+import 'package:android_app_manager/overlays/tips.dart';
+import 'package:android_app_manager/utils/localization.dart';
+import 'package:android_app_manager/utils/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class AppCheckbox extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:app_manager/utils/localization.dart';
-import 'package:app_manager/utils/config.dart';
+import 'package:android_app_manager/utils/localization.dart';
+import 'package:android_app_manager/utils/config.dart';
 
 void main() {
   group('Localization', () {

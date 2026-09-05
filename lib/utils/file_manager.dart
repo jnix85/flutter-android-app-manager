@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:app_manager/services/manager.dart';
-import 'package:app_manager/utils/config.dart';
-import 'package:app_manager/utils/localization.dart';
+import 'package:android_app_manager/services/manager.dart';
+import 'package:android_app_manager/utils/config.dart';
+import 'package:android_app_manager/utils/localization.dart';
 
 class FileManager {
   static Future<String?> selectDirectory({String? dialogTitle}) async {
